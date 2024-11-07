@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ball
+  - Wall
+  - Cylinder250
+  - Cylinder500
+  - Koniec
   layers:
   - Default
   - TransparentFX
