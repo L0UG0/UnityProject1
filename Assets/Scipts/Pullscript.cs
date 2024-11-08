@@ -14,22 +14,16 @@ public class BallController : MonoBehaviour
     private bool returning = false;
     private float moveCount = 0f;
 
-    private Vector3 initialPosition; // Zmienna na pozycję początkową
-    private Rigidbody rb; // Referencja do komponentu Rigidbody
+    private Vector3 initialPosition; 
+    private Rigidbody rb; 
 
     void Start()
     {
-        // Zapisz pozycję początkową obiektu
         initialPosition = transform.position;
-
-        // Pobierz komponent Rigidbody
         rb = GetComponent<Rigidbody>();
-        
-        // Upewnij się, że Rigidbody istnieje i jest używane
         if (rb == null)
         {
             rb = gameObject.AddComponent<Rigidbody>();
-            rb.isKinematic = true; // Ustaw na kinematyczny, aby kontrolować ruch ręcznie
         }
     }
 
@@ -46,23 +40,21 @@ public class BallController : MonoBehaviour
     {
         if (Input.GetButton(inputButtonName) && !returning)
         {
-            // Przesuwaj obiekt do przodu, gdy przycisk jest trzymany
             if (moveCount < distance)
             {
-                transform.Translate(0, 0, speed * Time.deltaTime); // Zmienione na dodatnie speed
+                transform.Translate(0, 0, speed * Time.deltaTime);
                 moveCount += speed * Time.deltaTime;
                 fire = true;
             }
         }
-        else if (moveCount > 0) // Warunek rozpoczęcia powrotu
+        else if (moveCount > 0)
         {
-            returning = true; // Włącz tryb powrotu
-            fire = false; // Przestań próbować strzelać
+            returning = true;
+            fire = false;
         }
 
         if (returning)
         {
-            // Strzel kulą, jeśli gotowe
             if (fire && ready)
             {
                 ball.transform.TransformDirection(Vector3.forward * 10);
