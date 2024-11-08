@@ -26,17 +26,17 @@ public class BallMv : MonoBehaviour
         }
         if (other.gameObject.tag == "Koniec")
         {
-            iloscprob.iloscProb -= 1;
+            
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
-            if (iloscprob.iloscProb == 0)
+            if (iloscprob.iloscProb <= 0)
             {
                 Score.czykoniec = true;
             }
             else
             {
                 transform.position = pozycjaStartowa;
-                
+                iloscprob.iloscProb -= 1;
             }
         }
     }
